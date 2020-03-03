@@ -1,0 +1,32 @@
+
+<div class="main-container" >
+
+    <mat-toolbar color="primary" class="toolbar head">
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title class="title">Angular</mat-card-title>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="main-content"> 
+        <mat-sidenav class="drawer-content" #snav mode="side" opened>
+            <mat-nav-list>
+                <ul>
+                    <li (click)="clickOnElement(0)">Element 1</li>
+                    <li (click)="clickOnElement(1)">Element 2</li>
+                    <li (click)="clickOnElement(2)">Element 3</li>
+                    <li (click)="clickOnElement(3)">Element 4</li>
+                    <li (click)="clickOnElement(4)">Element 5</li>
+                </ul>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content class="list-item"> 
+            <app-element1 *ngIf="item === 0"></app-element1>
+            <app-element2 *ngIf="item === 1"></app-element2>
+            <app-element3 *ngIf="item === 2"></app-element3>
+            <app-element4 *ngIf="item === 3"></app-element4>
+            <app-element5 *ngIf="item === 4"></app-element5>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>
+

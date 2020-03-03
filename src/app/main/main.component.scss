@@ -1,0 +1,53 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.drawer-content{
+    flex: 1;
+    width: 250px;
+    background-color: lemonchiffon;
+}
+
+.main-content {
+    background-color: linen;
+    font-size: 18px;
+    flex: 1;
+
+    .list-item{
+        margin-top: 20px;
+        padding-left: 25px;
+    }
+}
+
+li{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.toolbar {
+    z-index: 2;
+}
+
+.head{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    
+    .header-image { 
+        width : 60px;
+        height: 60px;
+        background-image: url(/assets/img/Angular.png);
+        background-size: cover;
+    }
+
+    .title{
+        font-size: 30px;
+    }  
+}
+
