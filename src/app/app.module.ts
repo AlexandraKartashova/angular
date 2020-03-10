@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CoreModule } from './core/core.module'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { HttpClientModule }   from '@angular/common/http';//http client
 
 import { MatInputModule } from '@angular/material/input'; //input
 import { MatFormFieldModule } from '@angular/material/form-field'; // form
@@ -27,6 +29,11 @@ import { Element2Component } from './element2/element2.component';
 import { Element3Component } from './element3/element3.component';
 import { Element4Component } from './element4/element4.component';
 import { Element5Component } from './element5/element5.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -37,7 +44,7 @@ import { Element5Component } from './element5/element5.component';
     Element2Component,
     Element3Component,
     Element4Component,
-    Element5Component
+    Element5Component,
     ],
   imports: [
     BrowserModule,
@@ -53,7 +60,14 @@ import { Element5Component } from './element5/element5.component';
     FormsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+    CoreModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

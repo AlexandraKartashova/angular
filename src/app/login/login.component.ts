@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
+import { HttpService } from '../core/service/http.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,16 +19,16 @@ export class LoginComponent implements OnInit {
   // userEmail = 'email@list.ru';
   // userPassword = 'aaAA11';
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router, 
+              private httpService: HttpService, 
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   email = new FormControl('', [
     Validators.required,
-    Validators.pattern('^[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$')
+    Validators.email
   ]);
 
   password = new FormControl('', [
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-    if(this.email.hasError('pattern')) {
+    if(this.email.hasError('email')) {
       return 'You must enter exampl@gmail.com';
     }
 
@@ -57,12 +59,18 @@ export class LoginComponent implements OnInit {
   }
 
   addUser(){
-      // if((this.userEmail === this.email) && (this.userPassword === this.password)) {
-      //   //const redirectUrl = '/main';
-        // this.router.navigateByUrl('/main');
-      // } 
-      console.log(this.email.value);
-      console.log(this.password.value);
+
+      this.httpService.getUser(this.email.value).subscribe(res => {
+        if(res.password === this.password.value) {
+          this.router.navigateByUrl('/main');
+        } else {
+          this._snackBar.open('Invalid email or password','', {
+            panelClass: 'error-email-password',
+            duration: 2000,
+          });
+      }
+      });
+
   }
   
 }
