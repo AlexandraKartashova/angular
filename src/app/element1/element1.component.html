@@ -1,12 +1,24 @@
 <div class="mat-elevation-div">
-    <div class="tooltips">
-        <button mat-raised-button
-            matTooltip="Info about the Tags"
-            matTooltipPosition="above">
-            Eat
-        </button>
+    <div class="tags-line">
+        <mat-chip-list aria-label="Fish selection" >
+            <mat-chip color="primary" selected *ngFor="let item of tagsArray">{{item}} </mat-chip>
+        </mat-chip-list>
     </div>
-
+    <div class="search-select">
+        <div class="search-input">
+            <input matInput placeholder="Search" (keyup)="getInput($event)">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="select-container">
+            <mat-form-field>
+                    <mat-select>
+                        <mat-option *ngFor="let item of displayedColumns">
+                        {{item}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
     <table mat-table matSort [dataSource]="dataSource" class="mat-elevation">
 
         <ng-container matColumnDef="author">

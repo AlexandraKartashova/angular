@@ -31,9 +31,13 @@ import { Element4Component } from './element4/element4.component';
 import { Element5Component } from './element5/element5.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +48,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     Element2Component,
     Element3Component,
     Element4Component,
-    Element5Component,
+    Element5Component
     ],
   imports: [
     BrowserModule,
@@ -67,7 +71,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

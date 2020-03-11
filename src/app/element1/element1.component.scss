@@ -22,6 +22,33 @@
     width: 52%;
 }
 
-.tooltips{
-    margin-bottom: 25px;
+.search-input {
+    display: flex;
+    width: 20vw;
+    padding-bottom: 5px;
+    border-bottom: 1px solid mediumblue;
+    
+    input::placeholder,
+    .fa-search {
+        color: mediumblue;
+    }
+    .fa-search {
+        margin-top: 10px;
+    }
+}
+
+.search-select {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+::ng-deep .mat-form-field-underline {
+    background-color: mediumblue !important;
+}
+
+::ng-deep .mat-form-field{
+    position: absolute;
+    bottom: 10px;
+    left: 200px;
+    height:20px;
 }

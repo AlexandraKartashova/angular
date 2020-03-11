@@ -4,15 +4,13 @@ import { catchError } from 'rxjs/internal/operators';
 import { _throw } from 'rxjs/observable/throw';
 import { Observable } from 'rxjs/Observable';
 
-
-
 @Injectable()
-export class ArticleService{
+export class TagService {
     private formatErrors(err) {
         return _throw(err.error);
     }
     constructor(private http: HttpClient) { }
-    public getArticles(): Observable<any> {
-        return this.http.get('http://localhost:8080/articles').pipe(catchError(this.formatErrors));
+    public getTag(): Observable<any> {
+        return this.http.get('http://localhost:8080/tags').pipe(catchError(this.formatErrors));
     }
 }
