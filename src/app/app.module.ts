@@ -8,18 +8,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { HttpClientModule }   from '@angular/common/http';//http client
+import { HttpClientModule }   from '@angular/common/http';
 
-import { MatInputModule } from '@angular/material/input'; //input
-import { MatFormFieldModule } from '@angular/material/form-field'; // form
-import { FormsModule }   from '@angular/forms';         //forms
+import { MatInputModule } from '@angular/material/input'; 
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { FormsModule }   from '@angular/forms';        
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon'; //icon
-import { MatCardModule } from '@angular/material/card'; //  card
-import { MatButtonModule } from '@angular/material/button';//button
-import { MatSidenavModule } from '@angular/material/sidenav'; //sidenav
-import { MatToolbarModule } from '@angular/material/toolbar';//toolbar
-import { MatListModule } from '@angular/material/list'; //list
+import { MatIconModule } from '@angular/material/icon'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list'; 
 
 
 import { LoginComponent } from './login/login.component';
@@ -36,8 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
-
-
+import { ModalWindowTagsComponent } from './modal-window-tags/modal-window-tags.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,8 @@ import { MatSelectModule } from '@angular/material/select';
     Element2Component,
     Element3Component,
     Element4Component,
-    Element5Component
+    Element5Component,
+    ModalWindowTagsComponent
     ],
   imports: [
     BrowserModule,
@@ -75,7 +76,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatSelectModule,
     MatDialogModule
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

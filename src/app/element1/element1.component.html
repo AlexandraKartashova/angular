@@ -1,7 +1,9 @@
 <div class="mat-elevation-div">
     <div class="tags-line">
         <mat-chip-list aria-label="Fish selection" >
-            <mat-chip color="primary" selected *ngFor="let item of tagsArray">{{item}} </mat-chip>
+            <mat-chip color="primary" selected *ngFor="let item of tagsArray" (click)="openDialog(item)">
+                {{item}} 
+            </mat-chip>
         </mat-chip-list>
     </div>
     <div class="search-select">
@@ -9,16 +11,17 @@
             <input matInput placeholder="Search" (keyup)="getInput($event)">
             <i class="fas fa-search"></i>
         </div>
-        <div class="select-container">
+        <div class="select-container">            
             <mat-form-field>
-                    <mat-select>
-                        <mat-option *ngFor="let item of displayedColumns">
+                    <mat-select [(ngModel)]="valueSelect">                        
+                        <mat-option *ngFor="let item of selectName" [value]="item">
                         {{item}}
                         </mat-option>
                     </mat-select>
             </mat-form-field>
         </div>
     </div>
+
     <table mat-table matSort [dataSource]="dataSource" class="mat-elevation">
 
         <ng-container matColumnDef="author">
