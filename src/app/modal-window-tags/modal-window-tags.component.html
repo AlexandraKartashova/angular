@@ -1,0 +1,30 @@
+    <h4>{{data.tag}}</h4>
+    
+    <div class="table">
+        <table mat-table matSort class="mat-elevation" [dataSource]="data.dataSource">
+            
+            <ng-container matColumnDef="author">
+                <th mat-header-cell *matHeaderCellDef class="change-width-author" mat-sort-header> Author </th>
+                <td mat-cell *matCellDef="let element" class="change-width-author"> {{element.author}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nameArticles" >
+                <th mat-header-cell *matHeaderCellDef class="change-width-nameArticles" mat-sort-header> Name Articles </th>
+                <td mat-cell *matCellDef="let element" class="change-width-nameArticles"> {{element.nameArticles}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef class="change-width-description" mat-sort-header> Description </th>
+                <td mat-cell *matCellDef="let element" class="change-width-description"> {{element.description}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onNoClick()">Ok</button>
+</div>
