@@ -47,33 +47,31 @@ export class Element1Component implements OnInit {
   getInput(event) {
     let result = [];
     const filterValue = event.target.value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();  
-    if (filterValue !== '') {
-      this.allInfoArticles.forEach(temp => {
-        let value = '';
-        switch(this.valueSelect){
-          case "Author":
-            value = temp.author;
-            break;
-          case "Name Articles":
-            value = temp.nameArticles;
-            break;
-          case "Description":
-            value = temp.description;
-            break;
-          default:
-            value = temp;
-            console.log('go', value)
-        }
-        let comparison = value.slice(temp,filterValue.length).toLowerCase();
-        console.log('filterValue', filterValue);
-        console.log('comparison', comparison);
-        if (comparison === filterValue) {
-          result.push(temp);
-        }
-      }); 
-    } else result = this.allInfoArticles;
-    this.dataSource = new MatTableDataSource(result);
+    if (!this.valueSelect) {
+      this.dataSource.filter = filterValue.trim().toLowerCase(); 
+    } else {
+      if (filterValue !== '') {
+        this.allInfoArticles.forEach(temp => {
+          let value = '';
+          switch(this.valueSelect){
+            case "Author":
+              value = temp.author;
+              break;
+            case "Name Articles":
+              value = temp.nameArticles;
+              break;
+            case "Description":
+              value = temp.description;
+              break;
+          }
+          let comparison = value.slice(temp,filterValue.length).toLowerCase();
+          if (comparison === filterValue) {
+            result.push(temp);
+          }
+        }); 
+      } else result = this.allInfoArticles;
+      this.dataSource = new MatTableDataSource(result);
+    }
   }
 
   openDialog(value) {

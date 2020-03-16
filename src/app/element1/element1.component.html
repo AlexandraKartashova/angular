@@ -36,7 +36,7 @@
 
         <ng-container matColumnDef="dataCreated">
             <th mat-header-cell *matHeaderCellDef class="change-width-data" mat-sort-header> Data Created </th>
-            <td mat-cell *matCellDef="let element" class="change-width-data"> {{element.dataCreated}} </td>
+            <td mat-cell *matCellDef="let element" class="change-width-data"> {{element.dataCreated | date}} </td>
         </ng-container>
 
         <ng-container matColumnDef="tags">
