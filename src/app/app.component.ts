@@ -13,7 +13,7 @@ export class AppComponent {
   // user: User;
 
   constructor(private http: HttpClient) {
-    console.log(2)
+
   }
   // ngOnInit(){
   //   HttpService.prototype.getData()

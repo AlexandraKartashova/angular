@@ -6,8 +6,6 @@ import { ArticleService } from '../core/service/articles.services';
 import { TagService } from '../core/service/tags.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalWindowTagsComponent } from '../modal-window-tags/modal-window-tags.component';
-import { element } from 'protractor';
-import { filter } from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-element1',
@@ -21,11 +19,12 @@ export class Element1Component implements OnInit {
 
   seeAll = true;
   displayedColumns: string[] = ['author', 'nameArticles', 'dataCreated', 'tags', 'description'];
-  selectName: string[] = ['', 'Author', 'Name Articles', 'Tags', 'Description'];
+  selectName: string[] = ['', 'Author', 'Name Articles', 'Description'];
   dataSource: MatTableDataSource<any>;
   tagsArray: any = [];
   allInfoArticles: any;
   valueSelect: string;
+  elementsAuthor: any;
 
   constructor(private articleService: ArticleService, private tagService: TagService, public dialog: MatDialog) { 
     this.articleService.getArticles().subscribe(res => {
@@ -46,15 +45,35 @@ export class Element1Component implements OnInit {
   }
 
   getInput(event) {
+    let result = [];
     const filterValue = event.target.value;
-      // if (filterValue != '') {
-      //   if(this.valueSelect === 'Author') {
-          
-      //   }
-
-      // } else 
-      
-      this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.dataSource.filter = filterValue.trim().toLowerCase();  
+    if (filterValue !== '') {
+      this.allInfoArticles.forEach(temp => {
+        let value = '';
+        switch(this.valueSelect){
+          case "Author":
+            value = temp.author;
+            break;
+          case "Name Articles":
+            value = temp.nameArticles;
+            break;
+          case "Description":
+            value = temp.description;
+            break;
+          default:
+            value = temp;
+            console.log('go', value)
+        }
+        let comparison = value.slice(temp,filterValue.length).toLowerCase();
+        console.log('filterValue', filterValue);
+        console.log('comparison', comparison);
+        if (comparison === filterValue) {
+          result.push(temp);
+        }
+      }); 
+    } else result = this.allInfoArticles;
+    this.dataSource = new MatTableDataSource(result);
   }
 
   openDialog(value) {
