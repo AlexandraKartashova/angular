@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ArticleService } from '../core/service/articles.services';
-import { TagService } from '../core/service/tags.service';
+import { ArticleService } from '../../../core/service/articles.services';
+import { TagService } from '../../../core/service/tags.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalWindowTagsComponent } from '../modal-window-tags/modal-window-tags.component';
+import { ModalWindowTagsComponent } from '../element1/modal-window-tags/modal-window-tags.component';
 
 @Component({
   selector: 'app-element1',
