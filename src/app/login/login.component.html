@@ -1,4 +1,12 @@
+
 <mat-card class="main-card">
+    <div>
+        <button class="btn-sign-up" mat-raised-button color="primary"
+                (click)="condition=!condition">
+                Sign up
+                
+        </button>
+    </div>
     <mat-card-header class="head">
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title class="title">Angular</mat-card-title>
@@ -20,15 +28,36 @@
                 <button mat-icon-button matSuffix (click)="hide = !hide" 
                     [attr.aria-label]="'Hide password'" 
                     [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
             </mat-form-field>
-        <div >
-            <button class="btn-log-in" mat-raised-button color="primary" 
+        <mat-form-field class="hidden" 
+            [class.check-password]="condition">
+            <mat-label>Confirm password</mat-label>
+                <input  matInput [type]="hide ? 'password' : 'text'"
+                    [formControl]="checkPassword"
+                    required>
+                <button mat-icon-button matSuffix>
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="checkPassword.invalid">{{getErrorMessageRepeatPassword()}}</mat-error>
+            </mat-form-field>
+        <div>
+            <button 
+                class="btn-log-in" 
+                mat-raised-button color="primary" 
                 [disabled]="email.invalid || password.invalid" 
-            (click)="addUser()">
-            Log in</button>
+                (click)="loginUser()">
+                Log in
+            </button>
+            <button 
+                class="hidden"
+                [class.btn-sign-in]="condition"
+                mat-raised-button color="primary"
+                (click)="addUser()">
+                Sign in
+            </button>
         </div>
     </div>
 </mat-card>

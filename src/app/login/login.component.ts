@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
   hide = true;
   disabled = true;
+  condition = false;
 
   // email ;
   // password ; 
@@ -36,6 +37,11 @@ export class LoginComponent implements OnInit {
     Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])).{6,10}$')
   ]);
   
+  checkPassword = new FormControl('', [
+    Validators.required,
+    // Validators.
+  ])
+
   getErrorMessageEmail(){
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -43,7 +49,6 @@ export class LoginComponent implements OnInit {
     if(this.email.hasError('email')) {
       return 'You must enter exampl@gmail.com';
     }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
@@ -54,12 +59,22 @@ export class LoginComponent implements OnInit {
     if (this.password.hasError('pattern')){
       return 'Password is not a valid format.Use symbol: a-z, A-Z, 0-9.';
     }
-
     return this.password.hasError('password') ? 'Not a valid password' : '';
   }
 
-  addUser(){
+  getErrorMessageRepeatPassword(){
+    if (this.password.hasError('required')){
+      return 'Passwords do not match';
+    }
+    if ((this.checkPassword.value !== this.password.value)){
+      console.log('value', this.checkPassword.value);
+      console.log('value2', this.password.value);
+      return 'Password is not a valid format.';
+    }
+    return this.checkPassword.hasError('checkPassword') ? 'Not a valid checkPassword' : '';
+  }
 
+  loginUser(){
       this.httpService.getUser(this.email.value).subscribe(res => {
         if(res.password === this.password.value) {
           this.router.navigateByUrl('/main');
@@ -69,8 +84,20 @@ export class LoginComponent implements OnInit {
             duration: 2000,
           });
       }
-      });
-
+    });
   }
-  
+
+  addUser(){
+    this.httpService.getUser(this.email.value).subscribe(res => {
+      if(res.password === this.password.value) {
+        this.router.navigateByUrl('/main');
+      } else {
+        this._snackBar.open('Invalid email or password','', {
+          panelClass: 'error-email-password',
+          duration: 2000,
+        });
+      }
+    });
+  }
 }
+// example@list.ru  asQ1asd
