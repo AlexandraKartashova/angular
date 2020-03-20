@@ -1,12 +1,5 @@
 
 <mat-card class="main-card">
-    <div>
-        <button class="btn-sign-up" mat-raised-button color="primary"
-                (click)="condition=!condition">
-                Sign up
-                
-        </button>
-    </div>
     <mat-card-header class="head">
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title class="title">Angular</mat-card-title>
@@ -15,7 +8,7 @@
         <mat-form-field class="email">
             <mat-label>Enter your email</mat-label>
                 <input matInput  
-                    [formControl]="email"
+                    [(formControl)]="email"
                     required >
                 <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
         </mat-form-field>
@@ -23,40 +16,45 @@
         <mat-form-field class="password">
             <mat-label>Enter your password</mat-label>
                 <input  matInput [type]="hide ? 'password' : 'text'"  
-                    [formControl]="password"
+                    [(formControl)]="password"
                     required>
                 <button mat-icon-button matSuffix (click)="hide = !hide" 
                     [attr.aria-label]="'Hide password'" 
                     [attr.aria-pressed]="hide">
-                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
             </mat-form-field>
-        <mat-form-field class="hidden" 
-            [class.check-password]="condition">
-            <mat-label>Confirm password</mat-label>
-                <input  matInput [type]="hide ? 'password' : 'text'"
-                    [formControl]="checkPassword"
-                    required>
-                <button mat-icon-button matSuffix>
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+        <div *ngIf="condition">
+            <mat-form-field class="check-password">
+                <mat-label>Confirm password</mat-label>
+                    <input  matInput [type]="hide ? 'password' : 'text'"
+                        [(formControl)]="checkPassword"
+                        (blur)="checkedEqualityPassword()"
+                        required>
                 <mat-error *ngIf="checkPassword.invalid">{{getErrorMessageRepeatPassword()}}</mat-error>
             </mat-form-field>
+            <div class="errorCheckPassword" *ngIf="errorCheckPassword"> Passwords do not match </div>
+        </div>
         <div>
-            <button 
+            <button *ngIf="!condition"
                 class="btn-log-in" 
-                mat-raised-button color="primary" 
-                [disabled]="email.invalid || password.invalid" 
-                (click)="loginUser()">
+                mat-raised-button color="primary"
+                [disabled]="email.invalid || password.invalid || condition" 
+                (click)="addUser()">
                 Log in
             </button>
-            <button 
-                class="hidden"
-                [class.btn-sign-in]="condition"
+            <button *ngIf="condition"
+                class="btn-registr-in" 
                 mat-raised-button color="primary"
+                [disabled]="email.invalid || password.invalid || errorCheckPassword || checkPassword.invalid" 
                 (click)="addUser()">
-                Sign in
+                Regist
+            </button>
+            <!-- условия кнопки log in , чтобы она подсвечивала -->
+            <button class="btn-sign-up" mat-raised-button color="primary"
+                (click)="condition=!condition">
+                {{condition ? "Back" : "Sign Up"}}
             </button>
         </div>
     </div>

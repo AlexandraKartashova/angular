@@ -2,29 +2,37 @@
 <div class="main-container" >
 
     <mat-toolbar color="primary" class="toolbar head">
+        <!-- <div class="head-left"> -->
+            <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
             <div mat-card-avatar class="header-image"></div>
-            <mat-card-title class="title">Angular</mat-card-title>
+            <mat-card-title class="title">Angular Project</mat-card-title>
+        <!-- </div> -->
+        <div class="head-right">
+            <div class="user-name">{{getNameUser()}}</div>
+            <button mat-button  class="btn-log-out">Log out</button>
+        </div>
     </mat-toolbar>
 
-    <mat-sidenav-container class="main-content"> 
-        <mat-sidenav class="drawer-content" #snav mode="side" opened>
-            <mat-nav-list>
+    <mat-sidenav-container class="main-content">  
+        <mat-sidenav class="drawer-content" 
+            #snav>
+            <mat-nav-list (click)="snav.close()">
                 <ul>
-                    <li (click)="clickOnElement(0)">Element 1</li>
-                    <li (click)="clickOnElement(1)">Element 2</li>
-                    <li (click)="clickOnElement(2)">Element 3</li>
-                    <li (click)="clickOnElement(3)">Element 4</li>
-                    <li (click)="clickOnElement(4)">Element 5</li>
+                    <li (click)="clickOnElement(0)">All articles</li>
+                    <li (click)="clickOnElement(1)">Favorite articles</li>
+                    <li (click)="clickOnElement(2)">Create article</li>
+                    <li (click)="clickOnElement(3)">My articles</li>
+                    <li (click)="clickOnElement(4)">Graphs</li>
                 </ul>
             </mat-nav-list>
         </mat-sidenav>
 
         <mat-sidenav-content class="list-item"> 
-            <app-element1 *ngIf="item === 0"></app-element1>
-            <app-element2 *ngIf="item === 1"></app-element2>
-            <app-element3 *ngIf="item === 2"></app-element3>
-            <app-element4 *ngIf="item === 3"></app-element4>
-            <app-element5 *ngIf="item === 4"></app-element5>
+            <app-allArticles *ngIf="item === 0"></app-allArticles>
+            <app-favoriteArticles *ngIf="item === 1"></app-favoriteArticles>
+            <app-createArticle *ngIf="item === 2"></app-createArticle>
+            <app-myArticles *ngIf="item === 3"></app-myArticles>
+            <app-graphs *ngIf="item === 4"></app-graphs>
         </mat-sidenav-content>
 
     </mat-sidenav-container>

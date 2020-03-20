@@ -5,15 +5,15 @@ import { MatSort } from '@angular/material/sort';
 import { ArticleService } from '../../../core/service/articles.services';
 import { TagService } from '../../../core/service/tags.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalWindowTagsComponent } from '../element1/modal-window-tags/modal-window-tags.component';
+import { ModalWindowTagsComponent } from './modal-window-tags/modal-window-tags.component';
 
 @Component({
-  selector: 'app-element1',
-  templateUrl: './element1.component.html',
-  styleUrls: ['./element1.component.scss']
+  selector: 'app-allArticles',
+  templateUrl: './allArticles.component.html',
+  styleUrls: ['./allArticles.component.scss']
 })
 
-export class Element1Component implements OnInit {
+export class AllArticlesComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 

@@ -35,8 +35,8 @@ li{
 
 .head{
     display: flex;
-    align-items: left;
-    justify-content: left;
+    // align-items: left;
+    // justify-content: left;
     
     .header-image { 
         width : 60px;
@@ -48,6 +48,35 @@ li{
     .title{
         font-size: 30px;
     }  
+
+    // .head-left {
+    //     // justify-content: left;
+    // }
+
+    .head-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        right: 2%;
+    }
+
+    .user-name{
+        color: whitesmoke;
+        margin-right: 10px;
+    }
+}
+
+.btn-log-out {
+    margin-left: 10px;
+    height: 48px;
+    width: 98px;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: gainsboro;
+    color: black;
+    margin-bottom: 20px;
+    position: right;
 }
 
 

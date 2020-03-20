@@ -8,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   item = 0;
+  
+  constructor() {
 
-  constructor() {}
+  }
+
+  getNameUser(){
+    let userName = localStorage.getItem('userName');
+    return userName;
+  }
+  
 
   ngOnInit(): void {
+    
   }
 
   clickOnElement(value) {

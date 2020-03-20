@@ -24,11 +24,11 @@ import { MatListModule } from '@angular/material/list';
 
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './login/main/main.component';
-import { Element1Component } from './login/main/element1/element1.component';
-import { Element2Component } from './login/main/element2/element2.component';
-import { Element3Component } from './login/main/element3/element3.component';
-import { Element4Component } from './login/main/element4/element4.component';
-import { Element5Component } from './login/main/element5/element5.component';
+import { AllArticlesComponent } from './login/main/allArticles/allArticles.component';
+import { FavoriteArticlesComponent } from './login/main/favoriteArticles/favoriteArticles.component';
+import { CreateArticleComponent } from './login/main/createArticle/createArticle.component';
+import { MyArticlesComponent } from './login/main/myArticles/myArticles.component';
+import { GraphsComponent } from './login/main/graphs/graphs.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -36,7 +36,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalWindowTagsComponent } from './login/main/element1//modal-window-tags/modal-window-tags.component';
+import { ModalWindowTagsComponent } from './login/main/allArticles/modal-window-tags/modal-window-tags.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -44,11 +44,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppComponent,
     LoginComponent,
     MainComponent,
-    Element1Component,
-    Element2Component,
-    Element3Component,
-    Element4Component,
-    Element5Component,
+    AllArticlesComponent,
+    FavoriteArticlesComponent,
+    CreateArticleComponent,
+    MyArticlesComponent,
+    GraphsComponent,
     ModalWindowTagsComponent
     ],
   imports: [

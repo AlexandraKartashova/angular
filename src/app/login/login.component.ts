@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   disabled = true;
   condition = false;
-
+  errorCheckPassword = false;
   // email ;
   // password ; 
 
@@ -30,16 +30,16 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [
     Validators.required,
     Validators.email
+    
   ]);
 
   password = new FormControl('', [
     Validators.required,
-    Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])).{6,10}$')
+    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=(.*[a-zA-Z])(?=.*[0-9])).{6,10}$')
   ]);
   
   checkPassword = new FormControl('', [
     Validators.required,
-    // Validators.
   ])
 
   getErrorMessageEmail(){
@@ -61,43 +61,38 @@ export class LoginComponent implements OnInit {
     }
     return this.password.hasError('password') ? 'Not a valid password' : '';
   }
-
+// example@list.ru  asQ1asd
   getErrorMessageRepeatPassword(){
-    if (this.password.hasError('required')){
-      return 'Passwords do not match';
-    }
-    if ((this.checkPassword.value !== this.password.value)){
-      console.log('value', this.checkPassword.value);
-      console.log('value2', this.password.value);
+    if (this.checkPassword.hasError('required')){
       return 'Password is not a valid format.';
     }
-    return this.checkPassword.hasError('checkPassword') ? 'Not a valid checkPassword' : '';
   }
 
-  loginUser(){
+  addUser(){
+    if (!this.condition) {
       this.httpService.getUser(this.email.value).subscribe(res => {
         if(res.password === this.password.value) {
+          localStorage.setItem('userName', res.display_name);
           this.router.navigateByUrl('/main');
-        } else {
+        } else { //post
           this._snackBar.open('Invalid email or password','', {
             panelClass: 'error-email-password',
             duration: 2000,
           });
-      }
-    });
+        }
+      });
+    } else {
+      this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
+        if (res.email) {
+          localStorage.setItem('userName', res.display_name);
+          this.router.navigateByUrl('/main');
+        }
+      })
+    }
+
   }
 
-  addUser(){
-    this.httpService.getUser(this.email.value).subscribe(res => {
-      if(res.password === this.password.value) {
-        this.router.navigateByUrl('/main');
-      } else {
-        this._snackBar.open('Invalid email or password','', {
-          panelClass: 'error-email-password',
-          duration: 2000,
-        });
-      }
-    });
+  checkedEqualityPassword(){
+    this.errorCheckPassword = this.checkPassword.value !== this.password.value;
   }
 }
-// example@list.ru  asQ1asd
