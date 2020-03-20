@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './login/main/main.component';
+import { AuthService } from './core/service/auth.service'
 
 const routes: Routes = [{
   path: 'login', 
@@ -15,7 +16,8 @@ const routes: Routes = [{
 },
 {
   path: 'main',
-  component: MainComponent
+  component: MainComponent,
+  canActivate: [AuthService]
 }];
 
 @NgModule({

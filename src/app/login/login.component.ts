@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { HttpService } from '../core/service/http.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { JWTService } from '../core/service/jwt.services';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,11 @@ export class LoginComponent implements OnInit {
   disabled = true;
   condition = false;
   errorCheckPassword = false;
-  // email ;
-  // password ; 
-
-  // userEmail = 'email@list.ru';
-  // userPassword = 'aaAA11';
 
   constructor(private router: Router, 
               private httpService: HttpService, 
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private jwtService: JWTService) { }
 
   ngOnInit(): void {
   }
@@ -72,6 +69,7 @@ export class LoginComponent implements OnInit {
     if (!this.condition) {
       this.httpService.getUser(this.email.value).subscribe(res => {
         if(res.password === this.password.value) {
+          this.jwtService.saveToken(res.token);
           localStorage.setItem('userName', res.display_name);
           this.router.navigateByUrl('/main');
         } else { //post
@@ -84,6 +82,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
         if (res.email) {
+          this.jwtService.saveToken(res.token);
           localStorage.setItem('userName', res.display_name);
           this.router.navigateByUrl('/main');
         }

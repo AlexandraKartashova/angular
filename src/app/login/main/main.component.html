@@ -2,14 +2,14 @@
 <div class="main-container" >
 
     <mat-toolbar color="primary" class="toolbar head">
-        <!-- <div class="head-left"> -->
             <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
             <div mat-card-avatar class="header-image"></div>
             <mat-card-title class="title">Angular Project</mat-card-title>
-        <!-- </div> -->
         <div class="head-right">
             <div class="user-name">{{getNameUser()}}</div>
-            <button mat-button  class="btn-log-out">Log out</button>
+            <button mat-button  class="btn-log-out"
+            (click)="logOut()"
+            >Log out</button>
         </div>
     </mat-toolbar>
 

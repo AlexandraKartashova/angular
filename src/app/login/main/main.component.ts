@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { JWTService } from '../../core/service/jwt.services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+
+export class MainComponent {
 
   item = 0;
   
-  constructor() {
+  constructor(private jwtService: JWTService, private router: Router) { }
 
-  }
-
-  getNameUser(){
+  getNameUser() {
     let userName = localStorage.getItem('userName');
     return userName;
   }
-  
 
-  ngOnInit(): void {
-    
+  logOut() {
+    this.jwtService.deleteToken();
+    localStorage.removeItem('userName');
+    this.router.navigate(['/login']);
   }
 
   clickOnElement(value) {

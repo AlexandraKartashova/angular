@@ -4,11 +4,9 @@ import { catchError } from 'rxjs/internal/operators';
 import { _throw } from 'rxjs/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TestBed } from '@angular/core/testing';
-
 
 @Injectable()
-export class HttpService{
+export class HttpService {
 
     private formatErrors(err) {
         return _throw(err.error);
@@ -35,4 +33,5 @@ export class HttpService{
         }
         return this.http.post('http://localhost:8080/users', JSON.stringify(body)).pipe(catchError(this.formatErrors));
     }
+    
 }

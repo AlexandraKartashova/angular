@@ -8,7 +8,7 @@
     right: 0;
 }
 
-.drawer-content{
+.drawer-content {
     flex: 1;
     width: 250px;
     background-color: lemonchiffon;
@@ -19,12 +19,12 @@
     font-size: 18px;
     flex: 1;
 
-    .list-item{
+    .list-item {
         padding: 30px 20px;
     }
 }
 
-li{
+li {
     font-size: 20px;
     margin-top: 10px;
 }
@@ -33,7 +33,7 @@ li{
     z-index: 2;
 }
 
-.head{
+.head {
     display: flex;
     // align-items: left;
     // justify-content: left;
@@ -49,10 +49,6 @@ li{
         font-size: 30px;
     }  
 
-    // .head-left {
-    //     // justify-content: left;
-    // }
-
     .head-right {
         display: flex;
         flex-direction: row;
@@ -61,7 +57,7 @@ li{
         right: 2%;
     }
 
-    .user-name{
+    .user-name {
         color: whitesmoke;
         margin-right: 10px;
     }
