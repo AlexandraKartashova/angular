@@ -1,0 +1,75 @@
+.created-container {
+    // display: flex;
+    // flex-direction: column;
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+    textarea {
+        margin-bottom: auto;
+    }
+}
+
+.nameArticle,
+.tag-container {
+    width: 50%;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.description{
+    width: 50%;
+    height: 50px;
+}
+
+// .nameArticle,
+// .description {
+//     @include placeholder {
+//         text-indent: 0px;
+//         transition: text-indent 300ms;
+//     }
+// }
+
+.btn-save {
+    height: 48px;
+    width: 98px;
+    font-size: 24px;
+    margin-top: 100px;
+}
+
+.tag-container {
+    width: 50%;
+    height: 100%;
+    margin-left: 10px;
+    text-align: -5px;
+}
+
+h1 {
+    color: #3f51b5;
+}
+
+::ng-deep .tag-wrapper delete-icon path{
+    fill: #fff !important;
+}
+
+::ng-deep .ng2-tags-container .ng-trigger{
+    background-color: #3f51b5;
+    color: #fff;
+    border-radius: 16px;
+    text-align: center;
+}
+
+::ng-deep .ng2-tag-input__text-input {
+    background-color: linen !important;
+    text-align: left;
+}
+
+::ng-deep .ng2-tag-input {
+    border-bottom: 1px solid #3f51b5 !important;
+}
+
+::ng-deep .ng2-tag-input__text-input {
+    padding: 0px !important;
+}

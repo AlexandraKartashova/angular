@@ -18,11 +18,13 @@ export class ModalWindowTagsComponent{
   constructor(
     public dialogRef: MatDialogRef<ModalWindowTagsComponent>, 
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-    ngOnInit() {
+    @Inject(MAT_DIALOG_DATA) public data: any) { 
       this.data.dataSource.paginator = this.paginator;
       this.data.dataSource.sort = this.sort;
+    }
+
+    ngOnInit() {
+      
     }
 
     onNoClick(): void {

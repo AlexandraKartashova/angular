@@ -35,8 +35,7 @@ li {
 
 .head {
     display: flex;
-    // align-items: left;
-    // justify-content: left;
+    height: 64px;
     
     .header-image { 
         width : 60px;
@@ -45,7 +44,7 @@ li {
         background-size: cover;
     }
 
-    .title{
+    .title {
         font-size: 30px;
     }  
 
@@ -74,5 +73,20 @@ li {
     margin-bottom: 20px;
     position: right;
 }
+
+.footer {
+    height: auto;
+    padding-right: 5px;
+    box-shadow: inset 0 0 1px;
+    background-color: rgb(218, 214, 214);
+
+    p {
+        text-align: right;
+        margin-top: 10px; 
+        font-size: 15px;
+        color: black;
+    }
+}
+
 
 

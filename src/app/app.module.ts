@@ -38,6 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalWindowTagsComponent } from './login/main/allArticles/modal-window-tags/modal-window-tags.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     MatChipsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    TagInputModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,4 +13,11 @@ export class TagService {
     public getTag(): Observable<any> {
         return this.http.get('http://localhost:8080/tags').pipe(catchError(this.formatErrors));
     }
+
+    public postTag(tags: string): Observable<any> {
+        const body = {
+            tags: tags,
+        }
+        return this.http.post('http://localhost:8080/tags', JSON.stringify(body)).pipe(catchError(this.formatErrors));
+    }
 }

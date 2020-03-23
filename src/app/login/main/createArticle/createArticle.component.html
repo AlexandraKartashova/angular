@@ -1,1 +1,28 @@
-<p>element3 works!</p>
+<div class="created-container">
+    <h1>Create a new article</h1>
+    <br>
+    <mat-form-field class="nameArticle">
+        <mat-label>Enter name article</mat-label>
+            <input matInput 
+            required
+            [(formControl)]="nameArticle" >
+            <mat-error *ngIf="nameArticle.invalid">{{getErrorMessageNameArticle()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="description">
+        <mat-label>Enter description</mat-label>
+        <textarea matInput required
+        [(formControl)]="description" ></textarea>
+        <mat-error *ngIf="description.invalid">{{getErrorMessageDescription()}}</mat-error>
+    </mat-form-field>
+    <br>
+    <div class="tag-container">
+        <tag-input ng-model="tags"></tag-input>
+    </div>
+    <br>
+    <button class="btn-save" mat-raised-button 
+    color="primary"
+    [disabled]="nameArticle.invalid || description.invalid" 
+    (click)="addArticle()">
+    Save</button>
+</div>
