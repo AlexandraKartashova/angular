@@ -1,6 +1,19 @@
 <div class="created-container">
     <h1>Create a new article</h1>
-    <br>
+
+    <div class="author-and-date">
+        <div class="author">
+            <p class="autor-bright">Author:
+                <span>{{authorName()}}</span>
+            </p>
+        </div>
+        <div class="date-created">
+            <p class="date-created-bright">Date created:
+                <span>{{dateCreated()}}</span>
+            </p>
+        </div>
+    </div>
+
     <mat-form-field class="nameArticle">
         <mat-label>Enter name article</mat-label>
             <input matInput 
@@ -8,21 +21,33 @@
             [(formControl)]="nameArticle" >
             <mat-error *ngIf="nameArticle.invalid">{{getErrorMessageNameArticle()}}</mat-error>
     </mat-form-field>
-    <br>
+
     <mat-form-field class="description">
         <mat-label>Enter description</mat-label>
         <textarea matInput required
         [(formControl)]="description" ></textarea>
         <mat-error *ngIf="description.invalid">{{getErrorMessageDescription()}}</mat-error>
     </mat-form-field>
-    <br>
+
     <div class="tag-container">
-        <tag-input ng-model="tags"></tag-input>
+        <tag-input 
+        [(ngModel)]="tags"
+        [placeholder]="'Add tag'"
+        ></tag-input>
     </div>
-    <br>
-    <button class="btn-save" mat-raised-button 
-    color="primary"
-    [disabled]="nameArticle.invalid || description.invalid" 
-    (click)="addArticle()">
-    Save</button>
+
+    <div class="group-button">
+        <button class="btn-save" mat-raised-button 
+            color="primary"
+            [disabled]="nameArticle.invalid || description.invalid || !tags.length" 
+            (click)="addArticle()">
+            Save
+        </button>
+
+        <button class="btn-clear" mat-raised-button 
+            color="primary"
+            (click)="clearField()">
+            Clear
+        </button>
+    </div>
 </div>

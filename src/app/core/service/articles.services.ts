@@ -10,10 +10,14 @@ export class ArticleService {
     private formatErrors(err) {
         return _throw(err.error);
     }
-
+    
     constructor(private http: HttpClient) { }
 
     public getArticles(): Observable<any> {
         return this.http.get('http://localhost:8080/articles').pipe(catchError(this.formatErrors));
+    }
+
+    public postArticles(body: object): Observable<any> {
+        return this.http.post('http://localhost:8080/articles', JSON.stringify(body)).pipe(catchError(this.formatErrors));
     }
 }

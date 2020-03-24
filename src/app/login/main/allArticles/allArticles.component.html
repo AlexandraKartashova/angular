@@ -1,7 +1,7 @@
 <div class="mat-elevation-div">
     <div class="tags-line">
         <mat-chip-list aria-label="Fish selection" >
-            <mat-chip color="primary" selected *ngFor="let item of tagsArray" (click)="openDialog(item)">
+            <mat-chip class="tags-line-focus" color="primary" selected *ngFor="let item of tagsArray" (click)="openDialog(item)">
                 {{item}} 
             </mat-chip>
         </mat-chip-list>

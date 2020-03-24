@@ -16,8 +16,8 @@
     <mat-sidenav-container class="main-content">  
         <mat-sidenav class="drawer-content" 
             #snav>
-            <mat-nav-list (click)="snav.close()">
-                <ul>
+            <mat-nav-list (click)="snav.close()" >
+                <ul class="nav-li-style">
                     <li (click)="clickOnElement(0)">All articles</li>
                     <li (click)="clickOnElement(1)">Favorite articles</li>
                     <li (click)="clickOnElement(2)">Create article</li>

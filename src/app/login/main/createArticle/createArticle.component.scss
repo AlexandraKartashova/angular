@@ -1,7 +1,6 @@
 .created-container {
-    // display: flex;
-    // flex-direction: column;
-    display: block;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -10,51 +9,66 @@
     }
 }
 
+.author-and-date {
+    width: 50%;
+    height: 100%;
+    text-align: left;
+    margin-left: 20px; 
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    
+    .author,
+    .date-created {
+
+        margin-bottom: 10px;
+        
+        .autor-bright,
+        .date-created-bright {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        span {
+            float: right;
+        }
+    }
+}
+
 .nameArticle,
-.tag-container {
+.tag-container,
+.description {
     width: 50%;
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
+    height: 100%;
 }
 
-.description{
-    width: 50%;
-    height: 50px;
-}
-
-// .nameArticle,
-// .description {
-//     @include placeholder {
-//         text-indent: 0px;
-//         transition: text-indent 300ms;
-//     }
-// }
-
-.btn-save {
+.btn-save,
+.btn-clear {
     height: 48px;
     width: 98px;
     font-size: 24px;
-    margin-top: 100px;
+    margin-left: 10px;
+    margin-top: 30px;
 }
 
 .tag-container {
-    width: 50%;
-    height: 100%;
-    margin-left: 10px;
+    margin-left: 20px;
     text-align: -5px;
 }
 
 h1 {
-    color: #3f51b5;
+    margin-top: 10px;
+    background-color: #3f51b5;
+    color: #fff;
+    padding: 7px 12px;
+    border-radius: 10px;
 }
 
-::ng-deep .tag-wrapper delete-icon path{
+::ng-deep .tag-wrapper delete-icon path {
     fill: #fff !important;
 }
 
-::ng-deep .ng2-tags-container .ng-trigger{
+::ng-deep .ng2-tags-container .ng-trigger {
     background-color: #3f51b5;
     color: #fff;
     border-radius: 16px;
@@ -72,4 +86,14 @@ h1 {
 
 ::ng-deep .ng2-tag-input__text-input {
     padding: 0px !important;
+}
+::ng-deep .ng2-tags-container .ng-trigger:hover {
+    background-color: #49b8f8 !important;
+    color: white !important;
+    font-weight: bolder;
+}
+
+::ng-deep .tag-wrapper delete-icon path:hover {
+    fill: red !important;
+    font-weight: 900;
 }
