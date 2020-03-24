@@ -14,7 +14,7 @@ export class TagService {
         return this.http.get('http://localhost:8080/tags').pipe(catchError(this.formatErrors));
     }
 
-    public postTag(tags: string): Observable<any> {
+    public postTag(tags: any): Observable<any> {
         const body = {
             tags: tags,
         }

@@ -24,7 +24,7 @@
     }
 }
 
-.nav-li-style{
+.nav-li-style {
     display: flex;
     flex-direction: column;
     align-items: flex-start;;
@@ -41,13 +41,6 @@ li {
     list-style-type: none; 
     padding: 7px 12px;
 
-}
-
-li:hover    {
-    background: #3f51b5;
-    color: white; 
-    font-weight: bolder;
-    padding: 7px 12px;
 }
 
 .toolbar {
@@ -78,8 +71,9 @@ li:hover    {
     }
 
     .user-name {
-        color: whitesmoke;
+        color: white;
         margin-right: 10px;
+        font-weight: bolder;
     }
 }
 
@@ -89,8 +83,9 @@ li:hover    {
     width: 98px;
     font-size: 20px;
     margin-top: 20px;
-    background-color: gainsboro;
-    color: black;
+    background-color: white;
+    color: #3f51b5;
+    font-weight: bolder;
     margin-bottom: 20px;
     position: right;
 }
@@ -109,5 +104,11 @@ li:hover    {
     }
 }
 
+li:hover    {
+    background: #3f51b5;
+    color: white; 
+    font-weight: bolder;
+    padding: 7px 12px;
+}
 
 

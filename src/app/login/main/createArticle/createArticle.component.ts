@@ -20,6 +20,7 @@ export class CreateArticleComponent implements OnInit {
     private articleServise: ArticleService,
     private tagService: TagService
     ) { }
+    
 
   ngOnInit(): void {
   }
@@ -33,6 +34,7 @@ export class CreateArticleComponent implements OnInit {
   ]);
 
   tags:any = [];
+  tagsArray:any = [];
 
   getErrorMessageNameArticle() {
     if (this.nameArticle.hasError('required')) {
@@ -72,18 +74,14 @@ export class CreateArticleComponent implements OnInit {
       description: this.description.value,
       dataCreated: this.dateCreated()
     }
+    console.log('tagsValue', tagsValue);
     this.articleServise.postArticles(body).subscribe(res => {
-      console.log(res)
+      console.log('postArticle', res)
     })
 
-    this.tagService.postTag(this.tags).subscribe(res => {
-      res.forEach(temp => {
-        if (tagsValue.indexOf(temp.name) < 0) this.tags.push(temp.name);
-      });
-      console.log('res', res);
-      console.log('tagsValue', tagsValue);
-      console.log('tags', this.tags);
+    this.nameArticle.reset();
+    this.description.reset();
+    this.tags = [];
 
-    });
   }
 }

@@ -1,4 +1,7 @@
 <div class="mat-elevation-div">
+    <div class="header">
+        <h1> All articles </h1>
+    </div>
     <div class="tags-line">
         <mat-chip-list aria-label="Fish selection" >
             <mat-chip class="tags-line-focus" color="primary" selected *ngFor="let item of tagsArray" (click)="openDialog(item)">
