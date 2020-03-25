@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-import { HttpService } from '../../../core/service/http.service';
 import { ArticleService } from '../../../core/service/articles.services'
 import { TagService } from '../../../core/service/tags.service'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,17 +12,8 @@ import { TagService } from '../../../core/service/tags.service'
 })
 export class CreateArticleComponent implements OnInit {
 
-
-
-  constructor(private router: Router, 
-    private httpService: HttpService,
-    private articleServise: ArticleService,
-    private tagService: TagService
-    ) { }
-    
-
-  ngOnInit(): void {
-  }
+  tags:any = [];
+  tagsArray:any = [];
 
   nameArticle = new FormControl('', [
     Validators.required
@@ -33,9 +23,20 @@ export class CreateArticleComponent implements OnInit {
     Validators.required
   ]);
 
-  tags:any = [];
-  tagsArray:any = [];
+  constructor(private articleServise: ArticleService,
+    private tagService: TagService,
+    public _snackBar: MatSnackBar
+    ) { }
+    
 
+  ngOnInit(): void {
+    this.tagService.getTag().subscribe(res => {
+      res.forEach(temp => {
+        if (this.tagsArray.indexOf(temp.name) < 0) this.tagsArray.push(temp.name);
+      });
+    });
+  }
+  
   getErrorMessageNameArticle() {
     if (this.nameArticle.hasError('required')) {
       return 'Fill in the field';
@@ -64,9 +65,9 @@ export class CreateArticleComponent implements OnInit {
   
   
   addArticle() {
-    const tagsValue = [];
+    let tagsValue = [];
     this.tags.forEach(temp => tagsValue.push(temp.value));
-    
+  
     const body = {
       nameArticles: this.nameArticle.value,
       tags: tagsValue,
@@ -74,14 +75,23 @@ export class CreateArticleComponent implements OnInit {
       description: this.description.value,
       dataCreated: this.dateCreated()
     }
-    console.log('tagsValue', tagsValue);
-    this.articleServise.postArticles(body).subscribe(res => {
-      console.log('postArticle', res)
+    this.articleServise.postArticles(body).subscribe(res => { 
+    })
+
+    tagsValue.filter(temp => {
+      if (this.tagsArray.indexOf(temp) < 0) {
+        this.tagService.postTag(temp).subscribe(res => { 
+      });
+    }
     })
 
     this.nameArticle.reset();
     this.description.reset();
     this.tags = [];
-
+    
+    this._snackBar.open('Article created','', {
+      panelClass: 'article-add-page',
+      duration: 2000
+    })
   }
 }

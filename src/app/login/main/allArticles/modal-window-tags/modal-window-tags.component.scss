@@ -1,5 +1,28 @@
 
-::ng-deep .mat-dialog-content{
+h4 {
+    width: 15%;
+    background-color: #3f51b5;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding: 7px;
+}
+
+.btn-ok {
+    height: 40px;
+    width: 90px;
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+    background-color: #3f51b5;
+}
+
+::ng-deep .mat-paginator-outer-container {
+    margin-bottom: -55px !important;
+}
+
+::ng-deep .mat-dialog-content {
     position:  fixed;
     top: 300px;
     left: 50%;
@@ -9,13 +32,4 @@
     text-align: center;
     box-shadow: 0px 0px 2px 1px black;
     z-index: 100;
-}
-
-h4 {
-    width: 15%;
-    background-color: mediumblue;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
-    font-weight: bolder;
 }

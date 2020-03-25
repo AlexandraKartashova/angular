@@ -24,7 +24,7 @@ export class AllArticlesComponent implements OnInit {
   tagsArray: any = [];
   allInfoArticles: any;
   valueSelect: string;
-  elementsAuthor: any;
+  // elementsAuthor: any;
 
   constructor(private articleService: ArticleService, private tagService: TagService, public dialog: MatDialog) { 
     this.articleService.getArticles().subscribe(res => {
@@ -76,6 +76,7 @@ export class AllArticlesComponent implements OnInit {
 
   openDialog(value) {
     const array = this.allInfoArticles.filter(res => res.tags === value);
+    console.log('array', array)
     const dialogRef = this.dialog.open(ModalWindowTagsComponent, {
     width: '90%',
     height: '85%',

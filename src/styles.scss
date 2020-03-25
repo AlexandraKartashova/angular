@@ -8,6 +8,19 @@
     background: linen;
 }
 
+.article-add-page .mat-simple-snackbar span {
+    color: white;
+    font-size: 26px !important;
+    font-weight: 400;
+}
+
+.article-add-page {
+    margin-bottom: 50px !important;
+    min-width: 200px !important;
+    background-color: #3f51b5 !important;
+    border-radius: 0px;
+}
+
 .tags-line {
     margin-bottom: 20px;
 }
