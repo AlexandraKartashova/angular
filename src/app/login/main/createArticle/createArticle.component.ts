@@ -71,13 +71,13 @@ export class CreateArticleComponent implements OnInit {
     const body = {
       nameArticles: this.nameArticle.value,
       tags: tagsValue,
+      id: new Date(),
       author: this.authorName(),
       description: this.description.value,
       dataCreated: this.dateCreated()
     }
     this.articleServise.postArticles(body).subscribe(res => { 
     })
-
     tagsValue.filter(temp => {
       if (this.tagsArray.indexOf(temp) < 0) {
         this.tagService.postTag(temp).subscribe(res => { 

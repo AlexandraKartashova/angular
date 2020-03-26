@@ -1,0 +1,44 @@
+<div class="created-container">
+    <h1>Edit article</h1>
+
+    <mat-form-field class="author" value="data.dataSource.author">
+        <mat-label>Enter author</mat-label>
+            <input matInput (click)="onKey($event)">
+    </mat-form-field>
+
+    <mat-form-field class="date-created">
+        <mat-label>Enter date created</mat-label>
+            <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="name-article">
+        <mat-label>Enter name article</mat-label>
+            <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="description">
+        <mat-label>Enter description</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+
+    <div class="container-tag">
+        <tag-input 
+        [(ngModel)]="tags"
+        [placeholder]="'Add tag'"
+        ></tag-input>
+    </div>
+
+    <div class="group-button">
+        <button class="btn-save" mat-raised-button 
+            color="primary"
+            (click)="editArticle()">
+            Save
+        </button>
+
+        <button class="btn-back" mat-raised-button 
+            color="primary"
+            (click)="backPage()">
+            Back
+        </button>
+    </div>
+</div>

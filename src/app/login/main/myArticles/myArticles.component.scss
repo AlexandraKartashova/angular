@@ -8,7 +8,7 @@
 }
 
 .change-width-nameArticles {
-    width: 20%;
+    width: 18%;
 }
 
 .change-width-data  {
@@ -20,7 +20,11 @@
 }
 
 .change-width-description {
-    width: 52%;
+    width: 44%;
+}
+
+.change-width-btn {
+    width: 12%;
 }
 
 .header {
@@ -28,3 +32,21 @@
     padding-left: 50%;
     color: #3f51b5;
 }
+
+.btn {
+    display: flex;
+
+    .btn-delete,
+    .btn-edit { 
+        height: 40px;
+        width: 70px;
+        font-size: 14px;
+        margin-left: 10px;
+        text-align: center;
+        background-color: white;
+        border: 1px solid #3f51b5;
+        color: #3f51b5;
+    }
+}
+
+

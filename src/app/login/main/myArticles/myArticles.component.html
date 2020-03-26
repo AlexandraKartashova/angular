@@ -27,7 +27,18 @@
 
         <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef class="change-width-description" mat-sort-header> Description </th>
-            <td mat-cell *matCellDef="let element" class="change-width-description"> {{element.description}} </td>
+            <td mat-cell *matCellDef="let element" class="change-width-description">{{element.description}}               
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef=" ">
+            <th mat-header-cell *matHeaderCellDef class="change-width-btn" mat-sort-header>  </th>
+            <td mat-cell *matCellDef="let element; let i = index" class="change-width-btn">
+                <div class="btn">
+                    <button class="btn-edit" mat-button cdkFocusInitial (click)="openDialog(element, i)" >Edit</button>
+                    <button class="btn-delete" mat-button cdkFocusInitial (click)="deleteArticle(element, i)">Delete</button>
+                </div>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

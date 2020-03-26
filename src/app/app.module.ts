@@ -39,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ModalWindowTagsComponent } from './login/main/allArticles/modal-window-tags/modal-window-tags.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TagInputModule } from 'ngx-chips';
+import { ModalWindowEditArticleComponent } from './login/main/myArticles/modal-window-edit-article/modal-window-edit-article.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { TagInputModule } from 'ngx-chips';
     CreateArticleComponent,
     MyArticlesComponent,
     GraphsComponent,
-    ModalWindowTagsComponent
+    ModalWindowTagsComponent,
+    ModalWindowEditArticleComponent
     ],
   imports: [
     BrowserModule,

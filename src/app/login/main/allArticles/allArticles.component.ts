@@ -81,6 +81,6 @@ export class AllArticlesComponent implements OnInit {
     width: '90%',
     height: '85%',
     data: {dataSource: array, tag: value}
-  });
+    });
   }
 }

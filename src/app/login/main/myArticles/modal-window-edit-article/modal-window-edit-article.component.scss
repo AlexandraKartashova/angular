@@ -35,15 +35,17 @@
     }
 }
 
-.nameArticle,
-.tag-container,
+.name-article,
+.date-created,
+.author,
+.container-tag,
 .description {
     width: 50%;
     height: 100%;
 }
 
 .btn-save,
-.btn-clear {
+.btn-back {
     height: 48px;
     width: 98px;
     font-size: 24px;
@@ -51,7 +53,7 @@
     margin-top: 30px;
 }
 
-.tag-container {
+.container-tag {
     margin-left: 20px;
     text-align: -5px;
 }
@@ -72,12 +74,6 @@ h1 {
     text-align: center;
 }
 
-::ng-deep .tag-container .ng2-tag-input__text-input {
-    background-color: linen !important;
-    text-align: left;
-    padding: 0px !important;
-}
-
 ::ng-deep .ng2-tag-input {
     border-bottom: 1px solid #3f51b5 !important;
 }
@@ -88,7 +84,3 @@ h1 {
     font-weight: bolder;
 }
 
-::ng-deep .tag-wrapper delete-icon path:hover {
-    fill: red !important;
-    font-weight: 900;
-}
