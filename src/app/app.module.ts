@@ -40,6 +40,7 @@ import { ModalWindowTagsComponent } from './login/main/allArticles/modal-window-
 import { MatDialogModule } from '@angular/material/dialog';
 import { TagInputModule } from 'ngx-chips';
 import { ModalWindowEditArticleComponent } from './login/main/myArticles/modal-window-edit-article/modal-window-edit-article.component';
+import { ModalWindowConfirmDeleteComponent } from './login/main/myArticles/modal-window-confirm-delete/modal-window-confirm-delete.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ModalWindowEditArticleComponent } from './login/main/myArticles/modal-w
     GraphsComponent,
     ModalWindowTagsComponent,
     ModalWindowEditArticleComponent,
+    ModalWindowConfirmDeleteComponent,
     ],
   imports: [
     BrowserModule,

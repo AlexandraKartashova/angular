@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ModalWindowEditArticleComponent } from './modal-window-edit-article/modal-window-edit-article.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalWindowConfirmDeleteComponent } from './modal-window-confirm-delete/modal-window-confirm-delete.component'
 
 @Component({
   selector: 'app-myArticles',
@@ -44,6 +45,11 @@ export class MyArticlesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.allArticlesForThisAuthor);
     this.dataSource.paginator = this.paginator;
     })
+    const dialogRef = this.dialog.open(ModalWindowConfirmDeleteComponent, {
+      width: '90%',
+      height: '85%',
+      data: {article: article}
+      });
   }
 
   openDialog(article, index) {
@@ -56,9 +62,5 @@ export class MyArticlesComponent implements OnInit {
       height: '85%',
       data: {article: article}
       });
-  }
-
-  deleteOrNot(){
-
   }
 }
