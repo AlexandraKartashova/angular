@@ -24,7 +24,6 @@ export class AllArticlesComponent implements OnInit {
   tagsArray: any = [];
   allInfoArticles: any;
   valueSelect: string;
-  // elementsAuthor: any;
 
   constructor(private articleService: ArticleService, private tagService: TagService, public dialog: MatDialog) { 
     this.articleService.getArticles().subscribe(res => {

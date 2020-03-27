@@ -53,7 +53,7 @@ import { ModalWindowEditArticleComponent } from './login/main/myArticles/modal-w
     MyArticlesComponent,
     GraphsComponent,
     ModalWindowTagsComponent,
-    ModalWindowEditArticleComponent
+    ModalWindowEditArticleComponent,
     ],
   imports: [
     BrowserModule,

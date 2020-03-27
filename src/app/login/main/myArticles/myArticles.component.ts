@@ -18,7 +18,6 @@ export class MyArticlesComponent implements OnInit {
   displayedColumns: string[] = ['author', 'nameArticles', 'dataCreated', 'tags','description', ' '];
   selectName: string[] = ['', 'Author', 'Name Articles', 'Description'];
   dataSource: MatTableDataSource<any>;
-  // editArticle: [];
   allArticlesForThisAuthor: object[] = [];
 
   constructor(private articleService: ArticleService, public dialog: MatDialog) { 
@@ -27,7 +26,6 @@ export class MyArticlesComponent implements OnInit {
     this.articleService.getArticles().subscribe(res => {
       if(res.length) {
         res =  res.filter(temp => temp && (temp.author === author));
-        console.log(res)
         this.allArticlesForThisAuthor = res;
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
@@ -49,13 +47,18 @@ export class MyArticlesComponent implements OnInit {
   }
 
   openDialog(article, index) {
-    const id = article.id;
-    
-    const changeArticleForEdit = this.allArticlesForThisAuthor.splice(index, 1)[0];
+    console.log(typeof(article.tags))
+    if(!Array.isArray(article.tags)) {
+      article.tags = [article.tags];
+    }
     const dialogRef = this.dialog.open(ModalWindowEditArticleComponent, {
-    width: '90%',
-    height: '85%',
-    data: {dataSource: changeArticleForEdit}
-    });
+      width: '90%',
+      height: '85%',
+      data: {article: article}
+      });
+  }
+
+  deleteOrNot(){
+
   }
 }

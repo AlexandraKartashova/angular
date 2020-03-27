@@ -25,7 +25,7 @@ export class ArticleService {
         return this.http.delete(`http://localhost:8080/articles/${id}`).pipe(catchError(this.formatErrors));
     }
 
-    public putArticle(body: object): Observable<any> {
-        return this.http.post('http://localhost:8080/articles', JSON.stringify(body)).pipe(catchError(this.formatErrors));
+    public putArticle(id: string, body: object): Observable<any> {
+        return this.http.put(`http://localhost:8080/articles/${id}`, JSON.stringify(body)).pipe(catchError(this.formatErrors));
     }
 }

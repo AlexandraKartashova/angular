@@ -1,31 +1,39 @@
 <div class="created-container">
     <h1>Edit article</h1>
 
-    <mat-form-field class="author" value="data.dataSource.author">
+    <mat-form-field class="author" >
         <mat-label>Enter author</mat-label>
-            <input matInput (click)="onKey($event)">
+            <input matInput 
+            [(ngModel)]="data.article.author" 
+            [value]="data.article.author">
     </mat-form-field>
 
     <mat-form-field class="date-created">
         <mat-label>Enter date created</mat-label>
-            <input matInput>
+            <input matInput 
+            [(ngModel)]="data.article.dataCreated" 
+            [value]="data.article.dataCreated">
     </mat-form-field>
 
     <mat-form-field class="name-article">
         <mat-label>Enter name article</mat-label>
-            <input matInput>
+            <input matInput 
+            [(ngModel)]="data.article.nameArticles"
+            [value]="data.article.nameArticles">
     </mat-form-field>
 
     <mat-form-field class="description">
         <mat-label>Enter description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput 
+        [(ngModel)]="data.article.description"
+        [value]="data.article.description"></textarea>
     </mat-form-field>
 
     <div class="container-tag">
         <tag-input 
-        [(ngModel)]="tags"
-        [placeholder]="'Add tag'"
-        ></tag-input>
+        [(ngModel)]="data.article.tags"
+        [placeholder]="'Add tag'">
+        </tag-input>
     </div>
 
     <div class="group-button">

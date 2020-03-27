@@ -15,9 +15,7 @@ export class ModalWindowEditArticleComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ModalWindowEditArticleComponent>,
     public articleService: ArticleService,
     @Inject(MAT_DIALOG_DATA) public data: any) { 
-      this.data.dataSource = this.author;
-      console.log(data.dataSource)
-      console.log(data.dataSource)
+      this.data.editArticle = this.author; // dr datasource will be
     }
 
   ngOnInit(): void {
@@ -28,22 +26,14 @@ export class ModalWindowEditArticleComponent implements OnInit {
   }
 
   editArticle(){
-    const body = {
-      // nameArticles: this.nameArticle.value,
-      // tags: tagsValue,
-      id: new Date(),
-      // author: this.authorName(),
-      // description: this.description.value,
-      dataCreated: this.dateCreated()
-    }
-    this.articleService.putArticle(body).subscribe(res => { 
+    this.articleService.putArticle(this.data.article.id, this.data.article).subscribe(res => { 
     })
-    
+    this.dialogRef.close();
   }
 
   onKey(event) {
     const inputValue = event.target.value;
-    console.log(event.target.value)
+    // console.log(event.target.value)
   }
 
   backPage(){
